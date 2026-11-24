@@ -5,7 +5,7 @@ class Type(Enum):
     JOVIAN = 1      #газові
 
 class Planet:
-    def __init__(self, name, mass_in_kg, orbital_velocity, mean_temperature, len_of_day, dist_from_sun,planet_type):
+    def __init__(self, name, mass_in_kg, orbital_velocity, mean_temperature, len_of_day, dist_from_sun, planet_type):
         self.__name = name
         self.__mass_in_kg = mass_in_kg
         self.__orbital_velocity = orbital_velocity
@@ -47,18 +47,18 @@ class Planetary:
         self.planets.append(planet)
 
     def sort_by_len_of_day(self):
-        self.planets.sort(key = lambda planet : planet.get_len_of_day())
+        self.planets.sort(key = lambda planet: planet.get_len_of_day())
         for planet in self.planets:
-            print(planet.get_name(),'-',planet.get_len_of_day())
+            print(planet.get_name(), '-', planet.get_len_of_day())
 
 def findDistanceBetweenPlanet(planetA, planetB):
-    print(f"Відстань від планетиs {planetA.get_name()} до планети {planetB.get_name()} становить {abs(planetA.get_distance_from_sun() - planetB.get_distance_from_sun())}\n{"_" * 92}")
+    return f"Відстань від планети {planetA.get_name()} до планети {planetB.get_name()} становить {abs(planetA.get_distance_from_sun() - planetB.get_distance_from_sun())}\n{"_" * 92}"
 
 def findAverageMass(planetary):
     total_mass = 0
     for planet in planetary.planets:
         total_mass += planet.get_mass_in_kg()
-    average_mass = total_mass / len(planetary.planets)
+    average_mass = total_mass / len(planetary.planets) if planetary.planets else 0
     print(f" \nСередня маса планетарію {planetary.name} становить {average_mass}\n{"_" * 92}")
 
 
